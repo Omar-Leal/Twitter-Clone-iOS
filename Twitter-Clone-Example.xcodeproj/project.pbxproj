@@ -12,12 +12,13 @@
 		E77BEEB328F03626007325EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEEB228F03626007325EE /* SceneDelegate.swift */; };
 		E77BEEB528F03626007325EE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEEB428F03626007325EE /* MainTabBarController.swift */; };
 		E77BEEBA28F03626007325EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E77BEEB928F03626007325EE /* Assets.xcassets */; };
-		E77BEEBD28F03626007325EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77BEEBB28F03626007325EE /* LaunchScreen.storyboard */; };
 		E77BEEC728F03BB2007325EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEEC628F03BB2007325EE /* HomeViewController.swift */; };
 		E77BEECA28F03BF4007325EE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEEC928F03BF4007325EE /* SearchViewController.swift */; };
 		E77BEECD28F03C17007325EE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEECC28F03C17007325EE /* NotificationsViewController.swift */; };
 		E77BEECF28F03C42007325EE /* DirectMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEECE28F03C42007325EE /* DirectMessagesViewController.swift */; };
 		E792981729110A0500FE9CF3 /* ProfieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792981629110A0500FE9CF3 /* ProfieVC.swift */; };
+		E79298192911153000FE9CF3 /* ProfileTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79298182911153000FE9CF3 /* ProfileTableViewHeader.swift */; };
+		E792981C291122FD00FE9CF3 /* TweetsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792981B291122FD00FE9CF3 /* TweetsModels.swift */; };
 		E7D6FFD228F2548D000CE7FA /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D6FFD128F2548D000CE7FA /* TweetTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,13 +29,14 @@
 		E77BEEB228F03626007325EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E77BEEB428F03626007325EE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E77BEEB928F03626007325EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E77BEEBC28F03626007325EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E77BEEBE28F03626007325EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E77BEEC628F03BB2007325EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E77BEEC928F03BF4007325EE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E77BEECC28F03C17007325EE /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		E77BEECE28F03C42007325EE /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
 		E792981629110A0500FE9CF3 /* ProfieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfieVC.swift; sourceTree = "<group>"; };
+		E79298182911153000FE9CF3 /* ProfileTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewHeader.swift; sourceTree = "<group>"; };
+		E792981B291122FD00FE9CF3 /* TweetsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsModels.swift; sourceTree = "<group>"; };
 		E7D6FFD128F2548D000CE7FA /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,12 +70,12 @@
 		E77BEEAF28F03626007325EE /* Twitter-Clone-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E792981A291122E900FE9CF3 /* Models */,
 				E7D6FFD028F2545E000CE7FA /* Views */,
 				E77BEEC428F03B51007325EE /* Controllers */,
 				E77BEEB028F03626007325EE /* AppDelegate.swift */,
 				E77BEEB228F03626007325EE /* SceneDelegate.swift */,
 				E77BEEB928F03626007325EE /* Assets.xcassets */,
-				E77BEEBB28F03626007325EE /* LaunchScreen.storyboard */,
 				E77BEEBE28F03626007325EE /* Info.plist */,
 				E734B5DC28F389F3006AB57D /* MockupData.swift */,
 			);
@@ -109,10 +111,19 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		E792981A291122E900FE9CF3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E792981B291122FD00FE9CF3 /* TweetsModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E7D6FFD028F2545E000CE7FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				E7D6FFD128F2548D000CE7FA /* TweetTableViewCell.swift */,
+				E79298182911153000FE9CF3 /* ProfileTableViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E77BEEBD28F03626007325EE /* LaunchScreen.storyboard in Resources */,
 				E77BEEBA28F03626007325EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,22 +206,13 @@
 				E77BEEC728F03BB2007325EE /* HomeViewController.swift in Sources */,
 				E77BEECF28F03C42007325EE /* DirectMessagesViewController.swift in Sources */,
 				E734B5DD28F389F3006AB57D /* MockupData.swift in Sources */,
+				E792981C291122FD00FE9CF3 /* TweetsModels.swift in Sources */,
 				E7D6FFD228F2548D000CE7FA /* TweetTableViewCell.swift in Sources */,
+				E79298192911153000FE9CF3 /* ProfileTableViewHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E77BEEBB28F03626007325EE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E77BEEBC28F03626007325EE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E77BEEBF28F03626007325EE /* Debug */ = {
