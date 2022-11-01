@@ -6,7 +6,26 @@ class HomeViewController: UIViewController {
 
     
       //A tableView Inside the viewController's frame
+    private func configureNavigationBar() {
+        let SIZE:Int = 26
+        let twitterLogoView = UIImageView(frame: CGRect(x: 0, y: 0, width: SIZE, height: SIZE))
+        twitterLogoView.contentMode = .scaleToFill
+        twitterLogoView.image = UIImage(named: "twitterLogo")
+        
+        let middelView = UIView(frame: CGRect(x: 0, y: 0, width: SIZE, height: SIZE))
+        middelView.addSubview(twitterLogoView)
+        navigationItem.titleView =  middelView
+        
+        let profileImage = UIImage(systemName: "person")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: profileImage, style: .plain, target: self, action: #selector(didTapProfile))
+        
+    }
     
+    @objc func didTapProfile() {
+        let profileScreen = ProfieVC()
+        navigationController?.pushViewController(profileScreen, animated: true)
+    }
+
     
     private let timeLineTableView: UITableView = {
         let tableView = UITableView()
@@ -21,6 +40,7 @@ class HomeViewController: UIViewController {
         view.addSubview(timeLineTableView)
         timeLineTableView.delegate = self
         timeLineTableView.dataSource = self
+        configureNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {

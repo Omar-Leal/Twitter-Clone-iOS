@@ -17,6 +17,7 @@
 		E77BEECA28F03BF4007325EE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEEC928F03BF4007325EE /* SearchViewController.swift */; };
 		E77BEECD28F03C17007325EE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEECC28F03C17007325EE /* NotificationsViewController.swift */; };
 		E77BEECF28F03C42007325EE /* DirectMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BEECE28F03C42007325EE /* DirectMessagesViewController.swift */; };
+		E792981729110A0500FE9CF3 /* ProfieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792981629110A0500FE9CF3 /* ProfieVC.swift */; };
 		E7D6FFD228F2548D000CE7FA /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D6FFD128F2548D000CE7FA /* TweetTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		E77BEEC928F03BF4007325EE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E77BEECC28F03C17007325EE /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		E77BEECE28F03C42007325EE /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
+		E792981629110A0500FE9CF3 /* ProfieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfieVC.swift; sourceTree = "<group>"; };
 		E7D6FFD128F2548D000CE7FA /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 		E77BEEC428F03B51007325EE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E7929815291109E700FE9CF3 /* General */,
 				E77BEEC528F03B6C007325EE /* Core */,
 			);
 			path = Controllers;
@@ -96,6 +99,14 @@
 				E77BEECE28F03C42007325EE /* DirectMessagesViewController.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E7929815291109E700FE9CF3 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				E792981629110A0500FE9CF3 /* ProfieVC.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		E7D6FFD028F2545E000CE7FA /* Views */ = {
@@ -177,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E77BEECA28F03BF4007325EE /* SearchViewController.swift in Sources */,
+				E792981729110A0500FE9CF3 /* ProfieVC.swift in Sources */,
 				E77BEEB528F03626007325EE /* MainTabBarController.swift in Sources */,
 				E77BEEB128F03626007325EE /* AppDelegate.swift in Sources */,
 				E77BEECD28F03C17007325EE /* NotificationsViewController.swift in Sources */,
