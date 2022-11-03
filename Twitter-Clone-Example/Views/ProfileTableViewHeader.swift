@@ -34,13 +34,37 @@ class ProfileTableViewHeader: UIView {
         
     }
     
+    private let indicator: UIView = {
+       let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 0.298, green: 0.62, blue: 0.922, alpha: 1)
+        view.layer.cornerRadius = 2
+        return view
+    }()
+    
+    
+    private var leadingAnchors: [NSLayoutConstraint] = []
+    private var trailingAnchors: [NSLayoutConstraint] = []
+
     private var selectedTabAtIndex: Int  = 0 {
         didSet {
-            print("clousure \(selectedTabAtIndex)")
+            for idx in 0..<tabs.count {
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+                    self?.stackSession.arrangedSubviews[idx].tintColor = idx == self?.selectedTabAtIndex ? .label : .secondaryLabel
+                    self?.leadingAnchors[idx].isActive = idx == self?.selectedTabAtIndex ? true : false
+                    self?.trailingAnchors[idx].isActive = idx == self?.selectedTabAtIndex ? true : false
+                    self?.layoutIfNeeded()
+                } completion: { _ in
+
+                }
+
+            }
         }
     }
     
-    private var tabs: [UIButton] = ["Tweets", "Tweets & replies", " Media", "Likes"]
+    
+    
+    private var tabs: [UIButton] = ["Tweets", "Tweets & replies", "Media", "Likes"]
         .map { buttonTitle in
             let buttons = UIButton(type: .system)
             buttons.setTitle(buttonTitle, for: .normal)
@@ -73,9 +97,9 @@ class ProfileTableViewHeader: UIView {
     private let followersCountLabel: UILabel = {
        let followersCount = UILabel()
         followersCount.translatesAutoresizingMaskIntoConstraints = false
-        followersCount.font = .systemFont(ofSize: 14, weight: .regular)
         followersCount.text = "1M"
-        followersCount.textColor = .secondaryLabel
+        followersCount.textColor = .label
+        followersCount.font = .systemFont(ofSize: 14, weight: .bold)
         return followersCount
     }()
     
@@ -162,7 +186,7 @@ class ProfileTableViewHeader: UIView {
     private let profileBackground: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "canada")
+        imageView.image = UIImage(named: "wall")
         imageView.clipsToBounds = true // with this, image is not going to overflow
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -178,10 +202,11 @@ class ProfileTableViewHeader: UIView {
           calendarJoined,
           joinDateLabel,
           followingCountLabel,
-          //followingTextLabel,
-//          followersCountLabel,
-//          followersTextLabel
-          stackSession
+          followingTextLabel,
+          followersCountLabel,
+          followersTextLabel,
+          stackSession,
+          indicator
         ].forEach(addSubview)
         setConstraints()
         configureStackButton()
@@ -192,8 +217,15 @@ class ProfileTableViewHeader: UIView {
     }
     
     private func configureStackButton() {
-        for (_, button) in stackSession.arrangedSubviews.enumerated() {
+        for (idx, button) in stackSession.arrangedSubviews.enumerated() {
             guard let button = button as? UIButton else { return }
+
+            if idx == selectedTabAtIndex {
+                button.tintColor = .label
+            } else {
+                button.tintColor = .secondaryLabel
+            }
+
             button.addTarget(self, action: #selector(didTapTabListener(_:)), for: .touchUpInside)
         }
     }
@@ -215,11 +247,21 @@ class ProfileTableViewHeader: UIView {
     }
     
     private func setConstraints(){
+        
+        for idx in 0..<tabs.count {
+            let leadingAchor = indicator.leadingAnchor.constraint(equalTo: stackSession.arrangedSubviews[idx].leadingAnchor)
+            leadingAnchors.append(leadingAchor)
+            
+            let trailingAnchor = indicator.trailingAnchor.constraint(equalTo: stackSession.arrangedSubviews[idx].trailingAnchor)
+            trailingAnchors.append(trailingAnchor)
+        }
+        
+        
         let backgroundImage = [
             profileBackground.leadingAnchor.constraint(equalTo: leadingAnchor),
             profileBackground.topAnchor.constraint(equalTo: topAnchor),
             profileBackground.trailingAnchor.constraint(equalTo: trailingAnchor),
-            profileBackground.heightAnchor.constraint(equalToConstant: 180)
+            profileBackground.heightAnchor.constraint(equalToConstant: 138)
         ]
         
         let avatarProfile = [
@@ -259,36 +301,43 @@ class ProfileTableViewHeader: UIView {
         
         
         let followingCount =  [
-            followingCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            followingCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             followingCountLabel.topAnchor.constraint(equalTo: joinDateLabel.bottomAnchor, constant: 10),
         ]
         
-//        let followingText = [
-//            followingTextLabel.leadingAnchor.constraint(equalTo: followersCountLabel.trailingAnchor, constant: 4),
-//            followingTextLabel.topAnchor.constraint(equalTo: joinDateLabel.bottomAnchor, constant: 10)
-//        ]
+        let followingText = [
+           followingTextLabel.leadingAnchor.constraint(equalTo: followingCountLabel.trailingAnchor, constant: 4),
+            followingTextLabel.topAnchor.constraint(equalTo: joinDateLabel.bottomAnchor, constant: 10)
+        ]
         
-//        let followersCount = [
-//            followersCountLabel.leadingAnchor.constraint(equalTo:  followingTextLabel.trailingAnchor, constant: 4),
-//            followersCountLabel.topAnchor.constraint(equalTo: joinDateLabel.bottomAnchor)
-//         
-//        ]
-//        
-//        let followersText = [
-//            followersTextLabel.leadingAnchor.constraint(equalTo: followersCountLabel.trailingAnchor, constant: 4),
-//            followersTextLabel.bottomAnchor.constraint(equalTo: followersCountLabel.bottomAnchor)
-//        ]
+        let followersCount = [
+            followersCountLabel.leadingAnchor.constraint(equalTo:  followingTextLabel.trailingAnchor, constant: 4),
+            followersCountLabel.topAnchor.constraint(equalTo: joinDateLabel.bottomAnchor, constant: 10)
+         
+        ]
+        
+        
+        let followersText = [
+            followersTextLabel.leadingAnchor.constraint(equalTo: followersCountLabel.trailingAnchor, constant: 4),
+            followersTextLabel.topAnchor.constraint(equalTo: joinDateLabel.bottomAnchor, constant: 10)
+        ]
 
         
          let sessionStackConstraint = [
             stackSession.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             stackSession.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             stackSession.topAnchor.constraint(equalTo: followingCountLabel.bottomAnchor, constant: 5),
-            
             stackSession.heightAnchor.constraint(equalToConstant: 35)
          ]
         
-        [backgroundImage,
+        let indicatorConstraints = [
+            leadingAnchors[0],
+            trailingAnchors[0],
+            indicator.topAnchor.constraint(equalTo: stackSession.arrangedSubviews[0].bottomAnchor),
+            indicator.heightAnchor.constraint(equalToConstant: 4)
+        ]
+        
+        [ backgroundImage,
          avatarProfile ,
          displayNames,
          userName,
@@ -296,11 +345,13 @@ class ProfileTableViewHeader: UIView {
          calendarIcon,
          joinedText,
          followingCount,
-         sessionStackConstraint
+         followingText,
+         followersCount,
+         followersText,
+         sessionStackConstraint,
+         indicatorConstraints
         ].forEach(NSLayoutConstraint.activate)
         
-       // NSLayoutConstraint.activate(followingText)
-//        NSLayoutConstraint.activate(followersCount)
-//        NSLayoutConstraint.activate(followersText)
+        
     }
 }
