@@ -26,6 +26,7 @@
 		E77DCE6C291479E500F90D65 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E77DCE6B291479E500F90D65 /* FirebaseFirestoreSwift */; };
 		E77DCE6E291479E500F90D65 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E77DCE6D291479E500F90D65 /* FirebaseStorage */; };
 		E77DCE70291479E500F90D65 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E77DCE6F291479E500F90D65 /* FirebaseStorageCombine-Community */; };
+		E77DCE7329148BEF00F90D65 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77DCE7229148BEF00F90D65 /* OnboardingVC.swift */; };
 		E792981729110A0500FE9CF3 /* ProfieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792981629110A0500FE9CF3 /* ProfieVC.swift */; };
 		E79298192911153000FE9CF3 /* ProfileTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79298182911153000FE9CF3 /* ProfileTableViewHeader.swift */; };
 		E792981C291122FD00FE9CF3 /* TweetsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792981B291122FD00FE9CF3 /* TweetsModels.swift */; };
@@ -45,6 +46,7 @@
 		E77BEECC28F03C17007325EE /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		E77BEECE28F03C42007325EE /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
 		E77DCE5C2914730600F90D65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E77DCE7229148BEF00F90D65 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		E792981629110A0500FE9CF3 /* ProfieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfieVC.swift; sourceTree = "<group>"; };
 		E79298182911153000FE9CF3 /* ProfileTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewHeader.swift; sourceTree = "<group>"; };
 		E792981B291122FD00FE9CF3 /* TweetsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsModels.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		E77DCE7129147EC400F90D65 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				E77DCE7229148BEF00F90D65 /* OnboardingVC.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				E77BEEB128F03626007325EE /* AppDelegate.swift in Sources */,
 				E77BEECD28F03C17007325EE /* NotificationsViewController.swift in Sources */,
 				E77BEEB328F03626007325EE /* SceneDelegate.swift in Sources */,
+				E77DCE7329148BEF00F90D65 /* OnboardingVC.swift in Sources */,
 				E77BEEC728F03BB2007325EE /* HomeViewController.swift in Sources */,
 				E77BEECF28F03C42007325EE /* DirectMessagesViewController.swift in Sources */,
 				E734B5DD28F389F3006AB57D /* MockupData.swift in Sources */,
