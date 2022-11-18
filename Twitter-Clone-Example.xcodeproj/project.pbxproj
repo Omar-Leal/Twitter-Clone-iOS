@@ -30,6 +30,7 @@
 		E792981729110A0500FE9CF3 /* ProfieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792981629110A0500FE9CF3 /* ProfieVC.swift */; };
 		E79298192911153000FE9CF3 /* ProfileTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79298182911153000FE9CF3 /* ProfileTableViewHeader.swift */; };
 		E792981C291122FD00FE9CF3 /* TweetsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792981B291122FD00FE9CF3 /* TweetsModels.swift */; };
+		E7CB1A1F2919132C00F686DE /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CB1A1E2919132C00F686DE /* RegisterViewModel.swift */; };
 		E7D6FFD228F2548D000CE7FA /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D6FFD128F2548D000CE7FA /* TweetTableViewCell.swift */; };
 		E7ECEB452915394A00E82F8D /* UIkits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ECEB442915394A00E82F8D /* UIkits.swift */; };
 		E7ECEB4729153E2600E82F8D /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ECEB4629153E2600E82F8D /* RegisterVC.swift */; };
@@ -52,6 +53,7 @@
 		E792981629110A0500FE9CF3 /* ProfieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfieVC.swift; sourceTree = "<group>"; };
 		E79298182911153000FE9CF3 /* ProfileTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewHeader.swift; sourceTree = "<group>"; };
 		E792981B291122FD00FE9CF3 /* TweetsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsModels.swift; sourceTree = "<group>"; };
+		E7CB1A1E2919132C00F686DE /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		E7D6FFD128F2548D000CE7FA /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		E7ECEB442915394A00E82F8D /* UIkits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIkits.swift; sourceTree = "<group>"; };
 		E7ECEB4629153E2600E82F8D /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		E77BEEAF28F03626007325EE /* Twitter-Clone-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E7CB1A1D291912FE00F686DE /* ViewModel */,
 				E7ECEB432915393600E82F8D /* Themes */,
 				E792981A291122E900FE9CF3 /* Models */,
 				E7D6FFD028F2545E000CE7FA /* Views */,
@@ -103,9 +106,9 @@
 				E77BEEB028F03626007325EE /* AppDelegate.swift */,
 				E77BEEB228F03626007325EE /* SceneDelegate.swift */,
 				E77BEEB928F03626007325EE /* Assets.xcassets */,
-				E77BEEBE28F03626007325EE /* Info.plist */,
 				E734B5DC28F389F3006AB57D /* MockupData.swift */,
 				E77DCE5C2914730600F90D65 /* GoogleService-Info.plist */,
+				E77BEEBE28F03626007325EE /* Info.plist */,
 			);
 			path = "Twitter-Clone-Example";
 			sourceTree = "<group>";
@@ -155,6 +158,14 @@
 				E792981B291122FD00FE9CF3 /* TweetsModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E7CB1A1D291912FE00F686DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E7CB1A1E2919132C00F686DE /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E7D6FFD028F2545E000CE7FA /* Views */ = {
@@ -261,6 +272,7 @@
 				E77BEECA28F03BF4007325EE /* SearchViewController.swift in Sources */,
 				E792981729110A0500FE9CF3 /* ProfieVC.swift in Sources */,
 				E77BEEB528F03626007325EE /* MainTabBarController.swift in Sources */,
+				E7CB1A1F2919132C00F686DE /* RegisterViewModel.swift in Sources */,
 				E77BEEB128F03626007325EE /* AppDelegate.swift in Sources */,
 				E77BEECD28F03C17007325EE /* NotificationsViewController.swift in Sources */,
 				E77BEEB328F03626007325EE /* SceneDelegate.swift in Sources */,

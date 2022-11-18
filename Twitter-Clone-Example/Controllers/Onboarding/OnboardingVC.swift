@@ -27,11 +27,11 @@ class OnboardingVC: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Create account", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .bold)
-        button.backgroundColor = twitterBackgroundButtonBlue
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.backgroundColor = darkButtonColor
         button.layer.masksToBounds = true
         button.tintColor = .white
-        button.layer.cornerRadius = 30
+        button.layer.cornerRadius = 20
         
         return button
     }()
@@ -40,7 +40,7 @@ class OnboardingVC: UIViewController {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.tintColor = .gray
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.text = "Do you have an Account?"
         return label
     }()
@@ -50,8 +50,8 @@ class OnboardingVC: UIViewController {
         let button  = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Login", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
-        button.tintColor = twitterBackgroundButtonBlue
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.tintColor = twitterBlue
         return button
     }()
 
@@ -59,10 +59,17 @@ class OnboardingVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         [ welcomeLabel, createAccountButtton, promptLabel, loginBotton ].forEach(view.addSubview)
+        createAccountButtton.addTarget(self, action: #selector(diTapToRegisterScreen), for: .touchUpInside)
+        
+        
+        
         configureConstraints()
     }
     
-
+    @objc private func diTapToRegisterScreen()  {
+        let registerVC = RegisterVC()
+        navigationController?.pushViewController(registerVC, animated: true)
+    }
   
     private func configureConstraints() {
         let welcomeText =
@@ -76,8 +83,8 @@ class OnboardingVC: UIViewController {
         [
             createAccountButtton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             createAccountButtton.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 20),
-            createAccountButtton.widthAnchor.constraint(equalTo: welcomeLabel.widthAnchor, constant: -20),
-            createAccountButtton.heightAnchor.constraint(equalToConstant: 60)
+            createAccountButtton.widthAnchor.constraint(equalToConstant: 300),
+            createAccountButtton.heightAnchor.constraint(equalToConstant: 40)
         ]
         
         let promptLableRules =
@@ -88,7 +95,7 @@ class OnboardingVC: UIViewController {
         
         let loginButtonRules =  [
             loginBotton.centerYAnchor.constraint(equalTo: promptLabel.centerYAnchor),
-            loginBotton.leadingAnchor.constraint(equalTo: promptLabel.trailingAnchor, constant: 10)
+            loginBotton.leadingAnchor.constraint(equalTo: promptLabel.trailingAnchor, constant: 6)
         ]
         
         
