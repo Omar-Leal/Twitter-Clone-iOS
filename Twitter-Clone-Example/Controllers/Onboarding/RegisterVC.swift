@@ -10,7 +10,32 @@ import Combine
 
 class RegisterVC: UIViewController {
     
-    private let viewModel = RegisterViewModel()
+    private let registerViewModel = RegisterViewModel()
+    
+    private func bindViews() {
+        emailField.addTarget(self, action: #selector(didChangeEmailField), for: .editingChanged)
+        passwordFiled.addTarget(self, action: #selector(didChangePassword), for: .editingChanged)
+        registerViewModel.$isRegistrationFormValid.sink { [weak self  ] validationState in
+            self?.saveAccountButton.isEnabled =  validationState
+        }
+        
+        .store(in: &subscriptions)
+        
+    }
+    
+    @objc private func didChangeEmailField() {
+        registerViewModel.email = emailField.text
+        registerViewModel.validateRegistrationForm() // check if the form is valid
+    }
+    
+    @objc private func didChangePassword() {
+        registerViewModel.password = passwordFiled.text
+        registerViewModel.validateRegistrationForm()
+    }
+    
+    @objc private func didTapToDismiss() {
+        view.endEditing(true)
+    }
     
     // Storing the subscription
     private var subscriptions: Set<AnyCancellable> = []
@@ -85,47 +110,30 @@ class RegisterVC: UIViewController {
         return button
     }()
     
-    @objc private func didChangeEmailField() {
-        viewModel.email = emailField.text
-        viewModel.validateRegistrationForm()
-    }
-    
-    @objc private func didChangePassword() {
-        viewModel.password = passwordFiled.text
-        viewModel.validateRegistrationForm()
-    }
+   
     
     
     /// binding actions and logic from ViewModel
-    private func bindViews() {
-        emailField.addTarget(self, action: #selector(didChangeEmailField), for: .editingChanged)
-        passwordFiled.addTarget(self, action: #selector(didChangePassword), for: .editingChanged)
-        viewModel.$isRegistrationFormValid.sink { [weak self  ] validationState in
-            self?.saveAccountButton.isEnabled =  validationState
-        }
-        
-        .store(in: &subscriptions)
-        
-    }
     
-    @objc private func didTapToDismiss() {
-        view.endEditing(true)
-    }
+    
+   
         
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureNavigationBar()
         // adding components to view
-     
-         
         [registerTitleLabel,
          emailField,
          passwordFiled,
          saveAccountButton
         ].forEach(view.addSubview)
         constraintsRules()
+        
+        // To dismiss the keyboard if the user taps outside the fields
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToDismiss)))
+        
+        // Just binding the RegisterViewModel
         bindViews()
     }
     

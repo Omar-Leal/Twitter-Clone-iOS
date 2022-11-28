@@ -3,7 +3,7 @@ import Foundation
 
 final class RegisterViewModel: ObservableObject {
     
-    @Published var email: String?
+    @Published var email: String? // This pubished variables is bindend with the UITextField
     @Published var password: String?
     @Published var isRegistrationFormValid: Bool = false
     
