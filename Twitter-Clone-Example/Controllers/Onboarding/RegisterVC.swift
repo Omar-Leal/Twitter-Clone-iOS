@@ -11,39 +11,57 @@ import Combine
 class RegisterVC: UIViewController {
     
     private let registerViewModel = RegisterViewModel()
-    
+	
+	// Storing the subscription to the .store because we need to store our state somewhere
+	private var subscriptions: Set<AnyCancellable> = []
+	
+	/// binding actions and logic from ViewModel
     private func bindViews() {
         emailField.addTarget(self, action: #selector(didChangeEmailField), for: .editingChanged)
         passwordFiled.addTarget(self, action: #selector(didChangePassword), for: .editingChanged)
-        registerViewModel.$isRegistrationFormValid.sink { [weak self  ] validationState in
+        
+        // COMBINE ASSIGNING INPUTS FIELD TO THE PUBLISHERS
+		// the following pipeline is where we receive the value in order to get the create button enable
+        registerViewModel.$isRegistrationFormValid.sink { [ weak self ] validationState in
             self?.saveAccountButton.isEnabled =  validationState
         }
-        
+        // Store our subscriptions
         .store(in: &subscriptions)
+		
+		registerViewModel.$user.sink { [ weak self ] user in
+			print("THE USER \(user)")
+		}
+		.store(in: &subscriptions)
+		
         
     }
     
+    // EMAIL FIELD LISTENER
     @objc private func didChangeEmailField() {
         registerViewModel.email = emailField.text
+        // THE form s valid ?
         registerViewModel.validateRegistrationForm() // check if the form is valid
     }
     
+    
+    // PASSWORD FIELD LISTENER
     @objc private func didChangePassword() {
         registerViewModel.password = passwordFiled.text
+        // THE form s valid ?
         registerViewModel.validateRegistrationForm()
     }
     
+    // Dismissing the key function to the UITapGestureRecognizer
     @objc private func didTapToDismiss() {
         view.endEditing(true)
     }
     
-    // Storing the subscription
-    private var subscriptions: Set<AnyCancellable> = []
+   
     
     private func configureNavigationBar() {
         let SIZE:Int = 26
         let twitterLogoView = UIImageView(frame: CGRect(x: 0, y: 0, width: SIZE, height: SIZE))
-        twitterLogoView.contentMode = .scaleToFill
+		twitterLogoView.contentMode = .scaleToFill
         twitterLogoView.image = UIImage(named: "twitterLogo")
         
         let middelView = UIView(frame: CGRect(x: 0, y: 0, width: SIZE, height: SIZE))
@@ -81,11 +99,7 @@ class RegisterVC: UIViewController {
         )
         return emailField
     }()
-    
-    
-    
-    
-    
+	
     private let passwordFiled: UITextField = {
         let password = UITextField()
         password.translatesAutoresizingMaskIntoConstraints = false
@@ -110,14 +124,6 @@ class RegisterVC: UIViewController {
         return button
     }()
     
-   
-    
-    
-    /// binding actions and logic from ViewModel
-    
-    
-   
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -128,6 +134,7 @@ class RegisterVC: UIViewController {
          passwordFiled,
          saveAccountButton
         ].forEach(view.addSubview)
+		saveAccountButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         constraintsRules()
         
         // To dismiss the keyboard if the user taps outside the fields
@@ -137,6 +144,10 @@ class RegisterVC: UIViewController {
         bindViews()
     }
     
+	
+	@objc func didTapRegister() {
+		registerViewModel.createUser()
+	}
 
     
     private func constraintsRules() {
